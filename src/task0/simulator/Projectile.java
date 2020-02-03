@@ -3,7 +3,8 @@ package task0.simulator;
 import java.awt.geom.Point2D;
 
 public class Projectile {
-    private static final double GRAVITATIONAL_CONSTANT = 100;
+
+    private static final double G = 100;
     private final Point2D coordinates = new Point2D.Double();
     private final double initialSpeed;
     private final double angle;
@@ -33,6 +34,7 @@ public class Projectile {
     }
 
     private double calculateVerticalPosition(final double timePassed) {
-        return ((initialSpeed * timePassed * Math.sin(angle)) - ((GRAVITATIONAL_CONSTANT * timePassed * timePassed) / 2)) * friction;
+        return ((initialSpeed * timePassed * Math.sin(angle)) - ((G * timePassed * timePassed) / 2)) * friction;
     }
+
 }

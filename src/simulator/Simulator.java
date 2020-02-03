@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class RunnableSimulator implements Runnable {
+public abstract class Simulator implements Runnable {
 
     protected final List<Point> listOfCoordinates = new ArrayList<>();
     protected boolean run = false;
@@ -23,11 +23,8 @@ public abstract class RunnableSimulator implements Runnable {
 
     abstract protected int getDelayBetweenCalculationsMs();
 
-    public List<Point> getListOfCoordinates() {
-        return listOfCoordinates;
+    public List<Point> getCopyOfCoordinates() {
+        return List.copyOf(listOfCoordinates);
     }
-
-    @Override
-    public abstract void run();
 
 }

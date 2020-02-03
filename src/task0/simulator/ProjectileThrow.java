@@ -1,12 +1,12 @@
 package task0.simulator;
 
-import simulator.RunnableSimulator;
+import simulator.Simulator;
 import utils.StopWatch;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
 
-public class ProjectileThrow extends RunnableSimulator {
+public class ProjectileThrow extends Simulator {
 
     protected static final int DELAY_BETWEEN_CALCULATIONS_MS = 1;
     private final Projectile projectile;
@@ -44,7 +44,8 @@ public class ProjectileThrow extends RunnableSimulator {
         }
     }
 
-    private Point createNewPoint(Point2D coordinates) {
+    private Point createNewPoint(final Point2D coordinates) {
         return new Point((int) Math.round(coordinates.getX()), (int) Math.round(coordinates.getY()));
     }
+
 }

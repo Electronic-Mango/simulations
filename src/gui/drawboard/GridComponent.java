@@ -4,10 +4,10 @@ import java.awt.*;
 
 public class GridComponent {
 
+    public final static int MAJOR_GRID_SPACING = 50;
+    public final static int MINOR_GRID_SPACING = 10;
     private final static Color MAJOR_GRID_COLOR = Color.LIGHT_GRAY;
     private final static Color MINOR_GRID_COLOR = Color.getHSBColor(0, 0, 0.95f);
-    private final static int MAJOR_GRID_SPACING = 50;
-    private final static int MINOR_GRID_SPACING = 10;
 
     public static void drawGrid(final Graphics graphics, final int width, final int height) {
         drawMinorGrid(graphics, width, height);
@@ -24,13 +24,14 @@ public class GridComponent {
     }
 
     private static void drawGrid(final Graphics graphics, final int width, final int height,
-                                 final Color majorGridColor, final int majorGridSpacing) {
-        graphics.setColor(majorGridColor);
-        for (int i = 0; i <= width; i += majorGridSpacing) {
+                                 final Color color, final int spacing) {
+        graphics.setColor(color);
+        for (int i = 0; i <= width; i += spacing) {
             graphics.drawLine(i, 0, i, height);
         }
-        for (int i = height; i > 0; i -= majorGridSpacing) {
+        for (int i = 0; i <= width; i += spacing) {
             graphics.drawLine(0, i, width, i);
         }
     }
+
 }

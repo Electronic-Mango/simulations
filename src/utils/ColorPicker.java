@@ -5,11 +5,11 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import static java.awt.Color.*;
+
 public class ColorPicker {
-    private static final List<Color> COLORS = Arrays.asList(
-            Color.BLUE, Color.BLACK, Color.MAGENTA,
-            Color.RED, Color.GREEN, Color.GRAY,
-            Color.CYAN, Color.ORANGE, Color.PINK);
+
+    private static final List<Color> COLORS = Arrays.asList(BLUE, BLACK, MAGENTA, RED, GREEN, GRAY, CYAN, ORANGE, PINK);
     private static Iterator<Color> ITERATOR = COLORS.iterator();
 
     public static Color getColor() {
@@ -18,4 +18,5 @@ public class ColorPicker {
         }
         return ITERATOR.next();
     }
+
 }

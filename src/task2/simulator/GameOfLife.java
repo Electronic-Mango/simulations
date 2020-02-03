@@ -1,10 +1,10 @@
 package task2.simulator;
 
-public class GameOfLifeSimulator {
+public class GameOfLife {
 
-    private GameOfLifeState gameState = new GameOfLifeState();
-    private int numberOfRows = 0;
-    private int numberOfColumns = 0;
+    private GameOfLifeState gameState;
+    private int numberOfRows;
+    private int numberOfColumns;
     private RuleSet ruleSet = RuleSet.defaultRuleSet();
 
     public void createGameOfLifeState(final int numberOfRows, final int numberOfColumns) {
@@ -49,4 +49,5 @@ public class GameOfLifeSimulator {
     public void clearGameState() {
         gameState = new GameOfLifeState(numberOfRows, numberOfColumns);
     }
+
 }

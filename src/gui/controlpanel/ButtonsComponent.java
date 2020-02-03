@@ -5,6 +5,7 @@ import gui.GUIEvents;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 public class ButtonsComponent extends JPanel {
 
@@ -13,17 +14,16 @@ public class ButtonsComponent extends JPanel {
     private final static String CLEAR_BUTTON = "CZYŚĆ";
     protected final JButton startStopButton = new JButton(START_BUTTON);
 
-    public ButtonsComponent(final ActionListener actionListener) {
-        configureButtons(actionListener);
+    public ButtonsComponent() {
+        configureButton(startStopButton, GUIEvents.START_SIMULATION);
+        configureButton(new JButton(CLEAR_BUTTON), GUIEvents.CLEAR_SIMULATIONS);
     }
 
-    protected void configureButtons(final ActionListener actionListener) {
-        configureButton(actionListener, startStopButton, GUIEvents.START_SIMULATION);
-        configureButton(actionListener, new JButton(CLEAR_BUTTON), GUIEvents.CLEAR_SIMULATIONS);
+    public void setActionListener(final ActionListener actionListener) {
+        Arrays.stream(getComponents()).filter(JButton.class::isInstance).map(JButton.class::cast).forEach(button -> button.addActionListener(actionListener));
     }
 
-    public void configureButton(ActionListener actionListener, JButton button, String startSimulation) {
-        button.addActionListener(actionListener);
+    public void configureButton(final JButton button, final String startSimulation) {
         button.setActionCommand(startSimulation);
         button.setFont(new Font(Font.DIALOG, Font.PLAIN, 20));
         add(button);
@@ -38,4 +38,5 @@ public class ButtonsComponent extends JPanel {
         startStopButton.setText(STOP_BUTTON);
         startStopButton.setActionCommand(GUIEvents.STOP_SIMULATION);
     }
+
 }

@@ -3,9 +3,9 @@ package task2.gui.controlpanel;
 import gui.GUIEvents;
 import gui.controlpanel.ButtonsComponent;
 import task2.simulator.RuleSet;
+import utils.ActionChangeListener;
 
 import javax.swing.*;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -13,15 +13,23 @@ public class GameOfLifeControlPanel extends JPanel {
 
     private static final String SIZE_BUTTON = "ROZMIAR";
     private static final String RANDOM_BUTTON = "LOSUJ";
+    private final ButtonsComponent buttons = new ButtonsComponent();
     private final SlidersComponent sliders;
-    private final ButtonsComponent buttons;
 
-    public GameOfLifeControlPanel(final ActionListener actionListener, final ChangeListener changeListener) {
-        sliders = new SlidersComponent(changeListener);
-        buttons = new ButtonsComponent(actionListener);
+    public GameOfLifeControlPanel(final ActionChangeListener listener) {
+        sliders = new SlidersComponent(listener);
+        configureButtonsComponent(listener);
+        addComponents();
+    }
+
+    private void configureButtonsComponent(final ActionListener actionListener) {
         buttons.setLayout(new GridLayout(4, 1));
-        buttons.configureButton(actionListener, new JButton(SIZE_BUTTON), GUIEvents.RESIZE_SIMULATION);
-        buttons.configureButton(actionListener, new JButton(RANDOM_BUTTON), GUIEvents.RANDOM_STATE);
+        buttons.configureButton(new JButton(SIZE_BUTTON), GUIEvents.RESIZE_SIMULATION);
+        buttons.configureButton(new JButton(RANDOM_BUTTON), GUIEvents.RANDOM_STATE);
+        buttons.setActionListener(actionListener);
+    }
+
+    private void addComponents() {
         add(sliders);
         add(buttons);
     }
@@ -41,4 +49,5 @@ public class GameOfLifeControlPanel extends JPanel {
     public void switchToStopButton() {
         buttons.switchToStopButton();
     }
+
 }

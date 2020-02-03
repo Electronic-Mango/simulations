@@ -9,10 +9,6 @@ public class GameOfLifeState {
     private final int numberOfColumns;
     private boolean[][] gameState;
 
-    public GameOfLifeState() {
-        this(0, 0);
-    }
-
     public GameOfLifeState(final int numberOfRows, final int numberOfColumns) {
         gameState = new boolean[numberOfRows + PADDING_CELLS][numberOfColumns + PADDING_CELLS];
         this.numberOfRows = numberOfRows;
@@ -59,8 +55,9 @@ public class GameOfLifeState {
         }
     }
 
-    public void switchState(int x, int y) {
+    public void switchState(final int x, final int y) {
         final boolean state = getState(x, y);
         setState(!state, x, y);
     }
+
 }

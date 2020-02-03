@@ -1,20 +1,23 @@
 # PSM - zadania programistyczne
 Projekt zawierający trzy zadania programistyczne stworzone na potrzebę przedmiotu PSM.
 
+## Autor
+**Paweł Rutkowski** - numer indeksu **S18277**
+
 ## Wstęp
-Projekt został stworzony w języku **Java** wersja 8.
+Projekt został stworzony w języku **Java** wersja 11.
 
 ### Środowisko
 Minimalne środowisko **JRE** jest dołączone do projektu, znajduje się w katalogu ```java-runtime```.
-Zostanie ono wykorzystane, gdy Java w wersji co najmniej 8 nie zostanie odnaleziona na komputerze.
+Zostanie ono wykorzystane, gdy Java w wersji co najmniej 11 nie zostanie odnaleziona na komputerze.
 
-Jeżeli katalog ```java-runtime``` nie zostanie odnaleziony, a Java 8 nie jest zainstalowana na komputerze użytkownik zostanie poproszony o pobranie **Java Runtime Environment 8**.
+Jeżeli katalog ```java-runtime``` nie zostanie odnaleziony, a Java 11 nie jest zainstalowana na komputerze użytkownik zostanie poproszony o pobranie **Java Runtime Environment** w wersji co najmniej **11**.
 
 ### Uruchamianie
 Na platformie Windows programy mogą zostać uruchomione korzystając z plików wykonywalnych ```.exe```.
 
 Na platformach innych niż Windows programy mogą zostać uruchomione z plików ```.jar``` znajdujących się w katalogu ```out```.
-```shell script
+```shell
 java -jar 'Zadanie 0 - Rzut Ukośny.jar'
 java -jar 'Zadanie 1 - Wahadło Podwójne.jar'
 java -jar 'Zadanie 2 - Gra w Życie.jar'
@@ -53,7 +56,7 @@ W trakcie symulacji możemy zmieniać parametry wahadła:
 
 Zmiana kąta obu wahadeł możliwa jest jedynie gdy symulacja jest zatrzymana.
 
-Możliwa jest również dynamiczna zmiana oporu ośrodka w którym porusza się wahadło.
+Możliwa jest również dynamiczna zmiana oporu ośrodka, w którym porusza się wahadło.
 
 ## Zadanie 2 - Gra w Życie
 Program pozwala na uruchomienie Gry w Życie.
@@ -67,6 +70,3 @@ Domyślnie początkowy stan komórej jest losowy, lecz można wyczyścić aktual
 Przy pomocy przycisku ```LOSUJ``` można stworzyć nowy, losowy układ komórek.
 
 Przy pomocy przycisku ```ROZMIAR``` można zmienić liczbę kolumn i wierszy dostępnych komórek.
-
-## Autor
-**Paweł Rutkowski** - numer indeksu **S18277**

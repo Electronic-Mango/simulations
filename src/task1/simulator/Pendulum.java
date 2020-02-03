@@ -2,19 +2,16 @@ package task1.simulator;
 
 import java.awt.*;
 
+import static utils.Numbers.TWO_PI;
+
 public class Pendulum {
 
-    private static final double TWO_PI = 2 * Math.PI;
     private final Point bob = new Point();
-    private int mass = 50;
-    private int length = 80;
-    private double angle = Math.toRadians(90);
     private double velocity = 0;
-    private double friction = 1;
-
-    public Pendulum() {
-
-    }
+    private int mass;
+    private int length;
+    private double angle;
+    private double friction;
 
     public Pendulum(int mass, int length, double angle, double friction) {
         this.mass = mass;
@@ -68,4 +65,5 @@ public class Pendulum {
     public double getVelocity() {
         return velocity;
     }
+
 }

@@ -3,22 +3,14 @@ package gui.controlpanel;
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 
-public class ControlPanelSliderComponent extends JPanel {
+public class SliderComponent extends JPanel {
 
     private final JLabel label = new JLabel();
     private final JSlider slider = new JSlider();
 
-    public ControlPanelSliderComponent(final String labelText, final int defaultValue,
-                                       final int maximumValue, final int minimumValue,
-                                       final int majorTickSpacing, final int minorTickSpacing,
-                                       final ChangeListener changeListener) {
-        this(labelText, defaultValue, maximumValue, minimumValue, majorTickSpacing, minorTickSpacing);
-        slider.addChangeListener(changeListener);
-    }
-
-    public ControlPanelSliderComponent(final String labelText, final int defaultValue,
-                                       final int maximumValue, final int minimumValue,
-                                       final int majorTickSpacing, final int minorTickSpacing) {
+    public SliderComponent(final String labelText, final int defaultValue,
+                           final int maximumValue, final int minimumValue,
+                           final int majorTickSpacing, final int minorTickSpacing) {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setBorder(BorderFactory.createEtchedBorder());
         configureLabelComponent(labelText);

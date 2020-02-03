@@ -10,7 +10,6 @@ public class GameOfLifeDrawBoard extends JPanel {
     private static final Color ALIVE_COLOR = Color.BLUE;
     private final MouseListener mouseListener;
     private JPanel[][] gameCells;
-
     private int numberOfRows;
     private int numberOfColumns;
 
@@ -29,12 +28,12 @@ public class GameOfLifeDrawBoard extends JPanel {
 
     public void configureGameCells() {
         gameCells = new JPanel[numberOfRows][numberOfColumns];
-        for (int i = 0; i < numberOfRows; i++) {
-            for (int j = 0; j < numberOfColumns; j++) {
+        for (int row = 0; row < numberOfRows; row++) {
+            for (int column = 0; column < numberOfColumns; column++) {
                 final JPanel cell = new JPanel();
                 cell.addMouseListener(mouseListener);
                 cell.setPreferredSize(new Dimension(getWidth() / numberOfRows, getHeight() / numberOfColumns));
-                gameCells[i][j] = cell;
+                gameCells[row][column] = cell;
                 add(cell);
             }
         }
@@ -49,11 +48,12 @@ public class GameOfLifeDrawBoard extends JPanel {
     }
 
     public Point getCoordinates(final JPanel cell) {
-        for (int i = 0; i < numberOfRows; i++) {
-            for (int j = 0; j < numberOfColumns; j++) {
-                if (gameCells[i][j] == cell) return new Point(i, j);
+        for (int row = 0; row < numberOfRows; row++) {
+            for (int column = 0; column < numberOfColumns; column++) {
+                if (gameCells[row][column] == cell) return new Point(row, column);
             }
         }
         return null;
     }
+
 }

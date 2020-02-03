@@ -1,19 +1,16 @@
 package task1.simulator;
 
-import simulator.RunnableSimulator;
+import simulator.Simulator;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
 
-public class DoublePendulum extends RunnableSimulator {
+public class DoublePendulum extends Simulator {
 
-    private static final double G = 0.5;
-    private Pendulum pendulum1 = new Pendulum();
-    private Pendulum pendulum2 = new Pendulum();
-
-    public DoublePendulum() {
-        calculateBobsPositions();
-    }
+    private static final double G = 0.4;
+    private static final int DELAY_BETWEEN_CALCULATIONS = 10;
+    private Pendulum pendulum1;
+    private Pendulum pendulum2;
 
     public DoublePendulum(final Pendulum pendulum1, final Pendulum pendulum2) {
         this.pendulum1 = pendulum1;
@@ -29,7 +26,7 @@ public class DoublePendulum extends RunnableSimulator {
 
     @Override
     protected int getDelayBetweenCalculationsMs() {
-        return 10;
+        return DELAY_BETWEEN_CALCULATIONS;
     }
 
     @Override
@@ -53,7 +50,7 @@ public class DoublePendulum extends RunnableSimulator {
         }
     }
 
-    private Point createNewPoint(Point2D coordinates) {
+    private Point createNewPoint(final Point2D coordinates) {
         return new Point((int) Math.round(coordinates.getX()), (int) Math.round(coordinates.getY()));
     }
 
@@ -107,4 +104,5 @@ public class DoublePendulum extends RunnableSimulator {
         final double den = pendulum2.getLength() * (2 * pendulum1.getMass() + pendulum2.getMass() - pendulum2.getMass() * Math.cos(2 * pendulum1.getAngle() - 2 * pendulum2.getAngle()));
         return (num1 * (num2 + num3 + num4)) / den;
     }
+
 }

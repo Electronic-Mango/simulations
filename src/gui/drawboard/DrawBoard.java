@@ -1,36 +1,22 @@
 package gui.drawboard;
 
+import simulator.Simulator;
+
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class DrawBoard extends JPanel implements ActionListener {
+abstract public class DrawBoard<T extends Simulator> extends JPanel {
 
-    private static final int REFRESH_DELAY_MS = 17;
-    protected final Timer timer = new Timer(REFRESH_DELAY_MS, this);
+    protected final SimulationPainter<T> simulationPainter;
+    protected List<T> simulators = new ArrayList<>();
 
-    protected abstract boolean isSimulationComplete();
-
-    public abstract void clearSimulation();
-
-    public void runSimulation() {
-        if (!timer.isRunning()) {
-            timer.start();
-        }
+    public DrawBoard(final SimulationPainter<T> simulationPainter) {
+        this.simulationPainter = simulationPainter;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent event) {
-        if (isSimulationComplete()) {
-            timer.stop();
-        }
-        repaint();
+    public void setSimulators(final List<T> simulators) {
+        this.simulators = simulators;
     }
 
-    @Override
-    public void paint(Graphics graphics) {
-        super.paint(graphics);
-        GridComponent.drawGrid(graphics, getWidth(), getHeight());
-    }
 }

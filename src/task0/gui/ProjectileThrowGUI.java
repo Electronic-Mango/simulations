@@ -2,46 +2,45 @@ package task0.gui;
 
 import gui.GUI;
 import gui.GUIEvents;
-import gui.controlpanel.ControlPanel;
+import task0.gui.drawboard.ProjectileThrowDrawBoard;
 import task0.simulator.ProjectileThrow;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class ProjectileThrowGUI extends GUI {
+public class ProjectileThrowGUI extends GUI<ProjectileThrow> {
 
     private final static int INITIAL_WIDTH = 1000;
     private final static int INITIAL_HEIGHT = 600;
-    private final ProjectileThrowDrawBoard drawBoard = new ProjectileThrowDrawBoard();
-    private final ControlPanel<ProjectileThrow> controlPanel = new ProjectileThrowControlPanel(this);
+    private final static int MIN_WIDTH = 800;
+    private final static int MIN_HEIGHT = 400;
 
     public ProjectileThrowGUI() {
-        super("Rzut ukośny");
+        super("Rzut ukośny", new ProjectileThrowDrawBoard(), new ProjectileThrowControlPanel());
         setPreferredSize(new Dimension(INITIAL_WIDTH, INITIAL_HEIGHT));
-        setMinimumSize(new Dimension(800, 400));
-        addComponents();
+        setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
         pack();
     }
 
-    private void addComponents() {
-        add(drawBoard);
-        add(controlPanel, BorderLayout.SOUTH);
+    @Override
+    public void clearSimulation() {
+        simulators.clear();
+        simulationFutures.clear();
+        repaint();
     }
 
     @Override
-    public void actionPerformed(ActionEvent event) {
+    public void additionalActions(final ActionEvent event) {
         switch (event.getActionCommand()) {
             case GUIEvents.START_SIMULATION:
-                startProjectileThrowSimulation();
+                prepareSimulation();
+                startSimulation();
                 break;
             case GUIEvents.CLEAR_SIMULATIONS:
-                drawBoard.clearSimulation();
+                stopSimulation();
+                clearSimulation();
                 break;
         }
     }
 
-    private void startProjectileThrowSimulation() {
-        drawBoard.prepareSimulation(controlPanel.prepareSimulationComponent());
-        drawBoard.runSimulation();
-    }
 }

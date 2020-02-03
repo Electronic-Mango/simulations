@@ -1,14 +1,13 @@
 package gui.controlpanel;
 
-import gui.drawboard.SimulationComponent;
-import simulator.RunnableSimulator;
+import utils.ActionChangeListener;
 
 import javax.swing.*;
 
-public abstract class ControlPanel<T extends RunnableSimulator> extends JPanel {
+abstract public class ControlPanel<T> extends JPanel {
 
-    public abstract SimulationComponent<T> prepareSimulationComponent();
+    abstract public T prepareSimulator();
 
-    protected abstract void addComponents();
+    abstract public void setListener(final ActionChangeListener eventListener);
 
 }

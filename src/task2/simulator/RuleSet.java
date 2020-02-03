@@ -19,6 +19,7 @@ public class RuleSet {
     public boolean isAlive(final int numberOfNeighbours, final boolean currentState) {
         if (numberOfNeighbours < deathByLoneliness) return false;
         if (numberOfNeighbours > deathByCrowding) return false;
-        return currentState || numberOfNeighbours == parentsRequired;
+        return currentState || (numberOfNeighbours == parentsRequired);
     }
+
 }

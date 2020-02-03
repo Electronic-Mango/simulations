@@ -37,4 +37,5 @@ public class StopWatch {
     private double nanoToSeconds(final long nanoseconds) {
         return nanoseconds / NANOSECONDS_IN_SECOND;
     }
+
 }

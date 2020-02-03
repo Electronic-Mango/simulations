@@ -1,13 +1,11 @@
 package task2.gui.controlpanel;
 
-import gui.controlpanel.ControlPanelSliderComponent;
+import gui.controlpanel.SliderComponent;
 
-import javax.swing.event.ChangeListener;
+public class AnimationSpeedSlider extends SliderComponent {
 
-public class AnimationSpeedSlider extends ControlPanelSliderComponent {
-
-    public AnimationSpeedSlider(final ChangeListener changeListener) {
-        super("Szybkość animacji", 50, 100, 0, 20, 5, changeListener);
+    public AnimationSpeedSlider() {
+        super("Szybkość animacji", 50, 100, 0, 20, 5);
         setPaintLabels(false);
     }
 
@@ -16,4 +14,5 @@ public class AnimationSpeedSlider extends ControlPanelSliderComponent {
         final int unscaledValue = super.getSliderValue();
         return (int) -(Math.sqrt(unscaledValue) * 100) + 1000;
     }
+
 }
