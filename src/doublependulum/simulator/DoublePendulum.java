@@ -5,12 +5,15 @@ import simulator.Simulator;
 import java.awt.*;
 import java.awt.geom.Point2D;
 
+import static java.lang.Math.cos;
+import static java.lang.Math.sin;
+
 public class DoublePendulum extends Simulator {
 
     private static final double G = 0.4;
     private static final int DELAY_BETWEEN_CALCULATIONS = 10;
-    private Pendulum pendulum1;
-    private Pendulum pendulum2;
+    private final Pendulum pendulum1;
+    private final Pendulum pendulum2;
 
     public DoublePendulum(final Pendulum pendulum1, final Pendulum pendulum2) {
         this.pendulum1 = pendulum1;
@@ -88,20 +91,22 @@ public class DoublePendulum extends Simulator {
     }
 
     private double calculateAngle1Acceleration() {
-        final double num1 = -G * (2 * pendulum1.getMass() + pendulum2.getMass()) * Math.sin(pendulum1.getAngle());
-        final double num2 = -pendulum2.getMass() * G * Math.sin(pendulum1.getAngle() - 2 * pendulum2.getAngle());
-        final double num3 = -2 * Math.sin(pendulum1.getAngle() - pendulum2.getAngle()) * pendulum2.getMass();
-        final double num4 = pendulum2.getVelocity() * pendulum2.getVelocity() * pendulum2.getLength() + pendulum1.getVelocity() * pendulum1.getVelocity() * pendulum1.getLength() * Math.cos(pendulum1.getAngle() - pendulum2.getAngle());
-        final double den = pendulum1.getLength() * (2 * pendulum1.getMass() + pendulum2.getMass() - pendulum2.getMass() * Math.cos(2 * pendulum1.getAngle() - 2 * pendulum2.getAngle()));
+        // These lines are way too long, however I find it more readable for complicated mathematical equations.
+        final double num1 = -G * (2 * pendulum1.getMass() + pendulum2.getMass()) * sin(pendulum1.getAngle());
+        final double num2 = -pendulum2.getMass() * G * sin(pendulum1.getAngle() - 2 * pendulum2.getAngle());
+        final double num3 = -2 * sin(pendulum1.getAngle() - pendulum2.getAngle()) * pendulum2.getMass();
+        final double num4 = pendulum2.getVelocity() * pendulum2.getVelocity() * pendulum2.getLength() + pendulum1.getVelocity() * pendulum1.getVelocity() * pendulum1.getLength() * cos(pendulum1.getAngle() - pendulum2.getAngle());
+        final double den = pendulum1.getLength() * (2 * pendulum1.getMass() + pendulum2.getMass() - pendulum2.getMass() * cos(2 * pendulum1.getAngle() - 2 * pendulum2.getAngle()));
         return (num1 + num2 + num3 * num4) / den;
     }
 
     private double calculateAngle2Acceleration() {
-        final double num1 = 2 * Math.sin(pendulum1.getAngle() - pendulum2.getAngle());
+        // These lines are way too long, however I find it more readable for complicated mathematical equations.
+        final double num1 = 2 * sin(pendulum1.getAngle() - pendulum2.getAngle());
         final double num2 = (pendulum1.getVelocity() * pendulum1.getVelocity() * pendulum1.getLength() * (pendulum1.getMass() + pendulum2.getMass()));
-        final double num3 = G * (pendulum1.getMass() + pendulum2.getMass()) * Math.cos(pendulum1.getAngle());
-        final double num4 = pendulum2.getVelocity() * pendulum2.getVelocity() * pendulum2.getLength() * pendulum2.getMass() * Math.cos(pendulum1.getAngle() - pendulum2.getAngle());
-        final double den = pendulum2.getLength() * (2 * pendulum1.getMass() + pendulum2.getMass() - pendulum2.getMass() * Math.cos(2 * pendulum1.getAngle() - 2 * pendulum2.getAngle()));
+        final double num3 = G * (pendulum1.getMass() + pendulum2.getMass()) * cos(pendulum1.getAngle());
+        final double num4 = pendulum2.getVelocity() * pendulum2.getVelocity() * pendulum2.getLength() * pendulum2.getMass() * cos(pendulum1.getAngle() - pendulum2.getAngle());
+        final double den = pendulum2.getLength() * (2 * pendulum1.getMass() + pendulum2.getMass() - pendulum2.getMass() * cos(2 * pendulum1.getAngle() - 2 * pendulum2.getAngle()));
         return (num1 * (num2 + num3 + num4)) / den;
     }
 

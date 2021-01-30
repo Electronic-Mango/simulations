@@ -10,9 +10,9 @@ import java.awt.*;
 
 public class ProjectileMotionControlPanel extends ControlPanel<ProjectileMotion> {
 
-    private final SliderComponent initialSpeedSliderComponent = new SliderComponent("PRĘDKOŚĆ POCZĄTKOWA", 30, 50, 10, 10, 5);
-    private final SliderComponent initialAngleSliderComponent = new SliderComponent("KĄT POCZĄTKOWY", 45, 80, 10, 10, 5);
-    private final SliderComponent frictionSliderComponent = new SliderComponent("TARCIE", 0, 90, 0, 10, 5);
+    private final SliderComponent initialSpeedSliderComponent = new SliderComponent("Initial speed", 30, 50, 10, 10, 5);
+    private final SliderComponent initialAngleSliderComponent = new SliderComponent("Initial angle", 45, 80, 10, 10, 5);
+    private final SliderComponent frictionSliderComponent = new SliderComponent("Friction", 0, 90, 0, 10, 5);
     private final ButtonsComponent buttonsComponent = new ButtonsComponent();
 
     public ProjectileMotionControlPanel() {

@@ -11,7 +11,7 @@ public class ButtonsComponent extends JPanel {
 
     private final static String START_BUTTON = "START";
     private static final String STOP_BUTTON = "STOP";
-    private final static String CLEAR_BUTTON = "CZYŚĆ";
+    private final static String CLEAR_BUTTON = "CLEAR";
     protected final JButton startStopButton = new JButton(START_BUTTON);
 
     public ButtonsComponent() {
@@ -20,7 +20,8 @@ public class ButtonsComponent extends JPanel {
     }
 
     public void setActionListener(final ActionListener actionListener) {
-        Arrays.stream(getComponents()).filter(JButton.class::isInstance).map(JButton.class::cast).forEach(button -> button.addActionListener(actionListener));
+        Arrays.stream(getComponents()).filter(JButton.class::isInstance).map(JButton.class::cast).forEach(button ->
+                button.addActionListener(actionListener));
     }
 
     public void configureButton(final JButton button, final String startSimulation) {

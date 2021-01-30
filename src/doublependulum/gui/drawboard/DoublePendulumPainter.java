@@ -1,8 +1,8 @@
 package doublependulum.gui.drawboard;
 
+import doublependulum.simulator.DoublePendulum;
 import gui.drawboard.SimulationPainter;
 import gui.drawboard.TrajectoryPainter;
-import doublependulum.simulator.DoublePendulum;
 
 import java.awt.*;
 import java.util.List;

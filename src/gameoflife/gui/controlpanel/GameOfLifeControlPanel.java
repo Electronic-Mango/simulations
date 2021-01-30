@@ -1,8 +1,8 @@
 package gameoflife.gui.controlpanel;
 
+import gameoflife.simulator.RuleSet;
 import gui.GUIEvents;
 import gui.controlpanel.ButtonsComponent;
-import gameoflife.simulator.RuleSet;
 import utils.ActionChangeListener;
 
 import javax.swing.*;
@@ -11,8 +11,8 @@ import java.awt.event.ActionListener;
 
 public class GameOfLifeControlPanel extends JPanel {
 
-    private static final String SIZE_BUTTON = "ROZMIAR";
-    private static final String RANDOM_BUTTON = "LOSUJ";
+    private static final String SIZE_BUTTON = "SIZE";
+    private static final String RANDOM_BUTTON = "RANDOM";
     private final ButtonsComponent buttons = new ButtonsComponent();
     private final SlidersComponent sliders;
 

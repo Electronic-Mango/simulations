@@ -1,8 +1,8 @@
 package gameoflife.gui;
 
-import gui.GUIEvents;
 import gameoflife.gui.controlpanel.GameOfLifeControlPanel;
 import gameoflife.simulator.GameOfLife;
+import gui.GUIEvents;
 import utils.ActionChangeListener;
 import utils.Numbers;
 
@@ -31,7 +31,7 @@ public class GameOfLifeGUI extends JFrame implements ActionChangeListener, Mouse
     private boolean mouseIsPressed = false;
 
     public GameOfLifeGUI() {
-        super("Gra w Życie");
+        super("Game of Life");
         setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
         setPreferredSize(new Dimension(INITIAL_WIDTH, INITIAL_HEIGHT));
         configureGameOfLife(INITIAL_ROWS, INITIAL_COLUMNS);
@@ -48,12 +48,23 @@ public class GameOfLifeGUI extends JFrame implements ActionChangeListener, Mouse
     @Override
     public void actionPerformed(final ActionEvent event) {
         switch (event.getActionCommand()) {
-            case GUIEvents.TIMER: refreshGameState(); break;
-            case GUIEvents.RANDOM_STATE: setRandomGameState(); break;
-            case GUIEvents.START_SIMULATION: startGame(); break;
-            case GUIEvents.RESIZE_SIMULATION: resizeGameState(); break;
-            case GUIEvents.CLEAR_SIMULATIONS: if (clearGameState()) break;
-            case GUIEvents.STOP_SIMULATION: stopGame(); break;
+            case GUIEvents.TIMER:
+                refreshGameState();
+                break;
+            case GUIEvents.RANDOM_STATE:
+                setRandomGameState();
+                break;
+            case GUIEvents.START_SIMULATION:
+                startGame();
+                break;
+            case GUIEvents.RESIZE_SIMULATION:
+                resizeGameState();
+                break;
+            case GUIEvents.CLEAR_SIMULATIONS:
+                if (clearGameState()) break;
+            case GUIEvents.STOP_SIMULATION:
+                stopGame();
+                break;
         }
     }
 
@@ -94,7 +105,7 @@ public class GameOfLifeGUI extends JFrame implements ActionChangeListener, Mouse
     }
 
     private void configureMenuBar() {
-        final JLabel menuText = new JLabel(" Użyj myszki do dynamicznej zmiany stanu gry");
+        final JLabel menuText = new JLabel(" Use mouse to change cells' state");
         menuText.setFont(new Font(Font.DIALOG, Font.PLAIN, 20));
         menuText.setHorizontalAlignment(SwingConstants.CENTER);
         menuBar.add(menuText);
@@ -150,9 +161,9 @@ public class GameOfLifeGUI extends JFrame implements ActionChangeListener, Mouse
     }
 
     private boolean changeSimulationSize() {
-        final Optional<Integer> columns = getSizeFromUser("Podaj liczbę kolumn");
+        final Optional<Integer> columns = getSizeFromUser("Number of columns");
         if (columns.isEmpty()) return false;
-        final Optional<Integer> rows = getSizeFromUser("Podaj liczbę wierszy");
+        final Optional<Integer> rows = getSizeFromUser("Number of rows");
         if (rows.isEmpty()) return false;
         prepareSimulationSize(columns.get(), rows.get());
         return true;
@@ -161,7 +172,7 @@ public class GameOfLifeGUI extends JFrame implements ActionChangeListener, Mouse
     private Optional<Integer> getSizeFromUser(final String message) {
         final Optional<Integer> value = Numbers.tryToParse(JOptionPane.showInputDialog(this, message));
         if (value.isEmpty() || value.get() < 1) {
-            JOptionPane.showMessageDialog(this, "Wprowadzono niepoprawną wartość!");
+            JOptionPane.showMessageDialog(this, "Incorrect value!");
         }
         return value;
     }

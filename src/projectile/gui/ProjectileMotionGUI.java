@@ -16,7 +16,7 @@ public class ProjectileMotionGUI extends GUI<ProjectileMotion> {
     private final static int MIN_HEIGHT = 400;
 
     public ProjectileMotionGUI() {
-        super("Rzut ukośny", new ProjectileMotionDrawBoard(), new ProjectileMotionControlPanel());
+        super("Projectile motion", new ProjectileMotionDrawBoard(), new ProjectileMotionControlPanel());
         setPreferredSize(new Dimension(INITIAL_WIDTH, INITIAL_HEIGHT));
         setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
         pack();
@@ -32,14 +32,14 @@ public class ProjectileMotionGUI extends GUI<ProjectileMotion> {
     @Override
     public void additionalActions(final ActionEvent event) {
         switch (event.getActionCommand()) {
-            case GUIEvents.START_SIMULATION:
+            case GUIEvents.START_SIMULATION -> {
                 prepareSimulation();
                 startSimulation();
-                break;
-            case GUIEvents.CLEAR_SIMULATIONS:
+            }
+            case GUIEvents.CLEAR_SIMULATIONS -> {
                 stopSimulation();
                 clearSimulation();
-                break;
+            }
         }
     }
 

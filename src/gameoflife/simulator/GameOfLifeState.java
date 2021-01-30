@@ -7,7 +7,7 @@ public class GameOfLifeState {
     private static final int PADDING_CELLS = 2;
     private final int numberOfRows;
     private final int numberOfColumns;
-    private boolean[][] gameState;
+    private final boolean[][] gameState;
 
     public GameOfLifeState(final int numberOfRows, final int numberOfColumns) {
         gameState = new boolean[numberOfRows + PADDING_CELLS][numberOfColumns + PADDING_CELLS];
@@ -50,7 +50,8 @@ public class GameOfLifeState {
 
     private void checkIfCorrectCoordinates(final int row, final int column) {
         if (row > numberOfRows || column > numberOfColumns) {
-            final String exceptionMessage = String.format("Index %d %d out of bounds for state size %d %d", row, column, numberOfRows, numberOfColumns);
+            final String exceptionMessage = String.format("Index %d %d out of bounds for state size %d %d", row, column,
+                    numberOfRows, numberOfColumns);
             throw new ArrayIndexOutOfBoundsException(exceptionMessage);
         }
     }

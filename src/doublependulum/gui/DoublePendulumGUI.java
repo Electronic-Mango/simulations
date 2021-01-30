@@ -1,9 +1,9 @@
 package doublependulum.gui;
 
-import gui.GUI;
-import gui.GUIEvents;
 import doublependulum.gui.drawboard.DoublePendulumDrawBoard;
 import doublependulum.simulator.DoublePendulum;
+import gui.GUI;
+import gui.GUIEvents;
 
 import javax.swing.event.ChangeEvent;
 import java.awt.*;
@@ -19,7 +19,7 @@ public class DoublePendulumGUI extends GUI<DoublePendulum> {
     private final DoublePendulumControlPanel controlPanel = (DoublePendulumControlPanel) super.controlPanel;
 
     public DoublePendulumGUI() {
-        super("Podwójne wahadło", new DoublePendulumDrawBoard(), new DoublePendulumControlPanel());
+        super("Double pendulum", new DoublePendulumDrawBoard(), new DoublePendulumControlPanel());
         setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
         setPreferredSize(new Dimension(INITIAL_WIDTH, INITIAL_HEIGHT));
         pack();
@@ -35,19 +35,17 @@ public class DoublePendulumGUI extends GUI<DoublePendulum> {
     @Override
     public void additionalActions(final ActionEvent event) {
         switch (event.getActionCommand()) {
-            case GUIEvents.START_SIMULATION:
+            case GUIEvents.START_SIMULATION -> {
                 clearSimulation();
                 startSimulation();
                 controlPanel.startSimulation();
-                break;
-            case GUIEvents.CLEAR_SIMULATIONS:
-                clearSimulation();
-                break;
-            case GUIEvents.STOP_SIMULATION:
+            }
+            case GUIEvents.CLEAR_SIMULATIONS -> clearSimulation();
+            case GUIEvents.STOP_SIMULATION -> {
                 stopSimulation();
                 controlPanel.stopSimulation();
                 controlPanel.updateAngleSliders(simulators.stream().findFirst().orElseThrow());
-                break;
+            }
         }
     }
 

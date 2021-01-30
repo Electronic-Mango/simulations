@@ -1,8 +1,8 @@
 package doublependulum.gui.drawboard;
 
+import doublependulum.simulator.DoublePendulum;
 import gui.drawboard.DrawBoard;
 import gui.drawboard.GridComponent;
-import doublependulum.simulator.DoublePendulum;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;

@@ -1,10 +1,10 @@
 package doublependulum.gui;
 
+import doublependulum.simulator.DoublePendulum;
+import doublependulum.simulator.Pendulum;
 import gui.controlpanel.ButtonsComponent;
 import gui.controlpanel.ControlPanel;
 import gui.controlpanel.SliderComponent;
-import doublependulum.simulator.DoublePendulum;
-import doublependulum.simulator.Pendulum;
 import utils.ActionChangeListener;
 
 import java.awt.*;
@@ -13,13 +13,13 @@ import static utils.Numbers.TWO_PI;
 
 public class DoublePendulumControlPanel extends ControlPanel<DoublePendulum> {
 
-    private final SliderComponent angle1Slider = new SliderComponent("Kąt ϴ₁", 90, 360, 0, 90, 45);
-    private final SliderComponent angle2Slider = new SliderComponent("Kąt ϴ₂", 90, 360, 0, 90, 45);
-    private final SliderComponent length1Slider = new SliderComponent("Długość 1", 80, 140, 20, 20, 10);
-    private final SliderComponent length2Slider = new SliderComponent("Długość 2", 80, 140, 20, 20, 10);
-    private final SliderComponent mass1Slider = new SliderComponent("Waga 1", 5, 10, 1, 1, 1);
-    private final SliderComponent mass2Slider = new SliderComponent("Waga 2", 5, 10, 1, 1, 1);
-    private final SliderComponent frictionSlider = new SliderComponent("Tarcie", 0, 10, 0, 1, 1);
+    private final SliderComponent angle1Slider = new SliderComponent("Angle ϴ₁", 90, 360, 0, 90, 45);
+    private final SliderComponent angle2Slider = new SliderComponent("Angle ϴ₂", 90, 360, 0, 90, 45);
+    private final SliderComponent length1Slider = new SliderComponent("Length 1", 80, 140, 20, 20, 10);
+    private final SliderComponent length2Slider = new SliderComponent("Length 2", 80, 140, 20, 20, 10);
+    private final SliderComponent mass1Slider = new SliderComponent("Weight 1", 5, 10, 1, 1, 1);
+    private final SliderComponent mass2Slider = new SliderComponent("Weight 2", 5, 10, 1, 1, 1);
+    private final SliderComponent frictionSlider = new SliderComponent("Friction", 0, 10, 0, 1, 1);
     private final ButtonsComponent buttonsComponent = new ButtonsComponent();
 
     public DoublePendulumControlPanel() {

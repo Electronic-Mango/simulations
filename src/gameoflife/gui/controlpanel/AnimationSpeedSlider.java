@@ -5,7 +5,7 @@ import gui.controlpanel.SliderComponent;
 public class AnimationSpeedSlider extends SliderComponent {
 
     public AnimationSpeedSlider() {
-        super("Szybkość animacji", 50, 100, 0, 20, 5);
+        super("Speed of animation", 50, 100, 0, 20, 5);
         setPaintLabels(false);
     }
 
